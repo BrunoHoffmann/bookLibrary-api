@@ -8,13 +8,13 @@ export class BooksController {
   constructor(private readonly bookService: BooksService) {}
 
   @Get()
-  getAllBooks(): string {
-    return 'Todos os livros estão aqui';
+  async getAllBooks(): Promise<BookDTO[]> {
+    return await this.bookService.getAllBooks();
   }
 
   @Post()
-  saveBook(@Body() newBook: BookDTO): BookDTO {
-    return this.bookService.saveBook(newBook);
+  async saveBook(@Body() newBook: BookDTO): Promise<BookDTO> {
+    return await this.bookService.saveBook(newBook);
   }
 
   @Patch()
