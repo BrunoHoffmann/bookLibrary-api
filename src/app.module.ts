@@ -4,6 +4,7 @@ import { BooksController } from './Controllers/books/books.controller';
 import { BooksService } from './Services/books/books.service';
 import { BookRepository } from './Mongo/Repository/book.repository';
 import { BookSchema } from './Mongo/Schemas/book.schema';
+import { UsersController } from './Controllers/users/users.controller';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { BookSchema } from './Mongo/Schemas/book.schema';
 
     MongooseModule.forFeature([{ name: 'book', schema: BookSchema }]),
   ],
-  controllers: [BooksController],
+  controllers: [BooksController, UsersController],
   providers: [BooksService, BookRepository],
 })
 export class AppModule {}
